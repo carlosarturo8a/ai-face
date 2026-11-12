@@ -1,14 +1,145 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-Face</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Face</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #101827;
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      padding: 24px;
+      background: #17243a;
+    }
+
+    h1 {
+      margin: 0;
+      color: #60a5fa;
+    }
+
+    main {
+      max-width: 650px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .avatar {
+      width: 220px;
+      height: 220px;
+      margin: 20px auto;
+      border-radius: 50%;
+      background: #263b59;
+      border: 3px solid #60a5fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 85px;
+    }
+
+    .chat {
+      background: #1e293b;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .messages {
+      min-height: 100px;
+      padding: 10px;
+      color: #cbd5e1;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #3b82f6;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+  </style>
 </head>
+
 <body>
+  <header>
     <h1>AI-Face</h1>
     <p>Tu inteligencia artificial ahora tiene rostro.</p>
-    <p>Próximamente...</p>
+  </header>
+
+  <main>
+    <h2>Tu avatar de inteligencia artificial</h2>
+
+    <div class="avatar" aria-label="Avatar provisional">
+      🤖
+    </div>
+
+    <div class="chat">
+      <h3>Conversación</h3>
+
+      <div class="messages" id="messages">
+        Bienvenido a AI-Face.
+      </div>
+
+      <div class="controls">
+        <input
+          type="text"
+          id="message"
+          placeholder="Escribe tu mensaje..."
+        >
+
+        <button type="button" onclick="sendMessage()">
+          Enviar
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("message");
+      const messages = document.getElementById("messages");
+      const text = input.value.trim();
+
+      if (text === "") return;
+
+      const paragraph = document.createElement("p");
+      paragraph.textContent = "Tú: " + text;
+      messages.appendChild(paragraph);
+
+      input.value = "";
+    }
+  </script>
 </body>
 </html>
+
 
